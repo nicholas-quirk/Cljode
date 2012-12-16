@@ -1,1 +1,0 @@
-{:snippet {"0" {:id "0", "code" "(defn id->snippet [id]\r\n  (db/get-in :code [id]))", "syntax" "clojure", "tags" "test", "title" "Test Snippet"}}, :snippet-ids ("0"), :next-snippet-id 0}
