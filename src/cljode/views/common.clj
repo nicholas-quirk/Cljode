@@ -2,9 +2,9 @@
   (use hiccup.core
        hiccup.page-helpers))
 
-(def includes {:jquery (include-js "/js/jquery-1.7.2.min.js")
-               :codemirror-js (include-js "/js/codemirror-3.0/lib/codemirror.js")
+(def includes {:codemirror-js (include-js "/js/codemirror-3.0/lib/codemirror.js")
                :codemirror-css (include-css "/js/codemirror-3.0/lib/codemirror.css")
+               :clike (include-js "/js/codemirror-3.0/mode/clike/clike.js")
                :clojure (include-js "/js/codemirror-3.0/mode/clojure/clojure.js")
                :default (include-css "/css/default.css")})
 
@@ -23,5 +23,5 @@
 
 (defpartial main-layout [syntax & content]
   (html5
-    (build-head [:default :codemirror-css :jquery :codemirror-js (keyword syntax)])
+    (build-head [:default :codemirror-css :codemirror-js (keyword syntax)])
       [:body content]))

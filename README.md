@@ -1,18 +1,7 @@
 # cljode
 
-A Clojure library designed to ... well, that part is up to you.
+A light weight web app that manages code snippets. Because similar desktop applications use XML or embedded databases to store your code. I want something small I can run from a Dropbox account.
 
 ## Usage
 
-FIXME
-
-## License
-
-Copyright © 2012 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
-=======
-Cljode
-======
-
-Manage your code snippets through a web browser.
+lein run 8080

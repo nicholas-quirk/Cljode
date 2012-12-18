@@ -16,9 +16,11 @@
 	    (form-to [:post "/add_snippet"]
 	      [:div.label "title"] (text-field :title title) [:br]
 	      [:div.label "tags"] (text-field :tags tags) [:br]
-	      [:div.label "syntax"] (text-field :syntax syntax) [:br]
+        [:div.label "syntax"]
+        (drop-down :syntax ["clike"
+                            "clojure"]) [:br]
 	      (text-area {:id "code" :name "code"} :code code) [:br]
-	      (submit-button "save"))]))
+	      (submit-button "add"))]))
 
 (defn edit-snippet [{:keys [id]}]
   (if-let [snippet (snippet/id->snippet id)]
@@ -26,8 +28,10 @@
       (form-to [:post "/edit_snippet"]
         (hidden-field :id id)
         [:div.label "title"] (text-field :title (snippet "title")) [:br]
-        [:div.label "tags"] (text-field :tags (snippet "tags")) [:br]
-	      [:div.label "syntax"] (text-field :syntax (snippet "syntax")) [:br]
+	      [:div.label "tags"] (text-field :tags (snippet "tags")) [:br]
+        [:div.label "syntax"] 
+        (drop-down :syntax ["clike"
+                            "clojure"] (snippet "syntax")) [:br]
 	      [:div.textarea_border (text-area {:id "code" :name "code"} :code (snippet "code"))] [:br]
         (submit-button "save"))
         [:script {type "text/javascript"} 
