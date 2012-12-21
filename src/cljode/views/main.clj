@@ -63,9 +63,9 @@
 
 (defn build-snippet-links []
     [:div.snippets
-	    [:ul.items
-	      (for [title (snippet/titles)]
-	        [:li (link-to (snippet/edit-url (key title)) (val title))])]])
+      [:ul.items
+        (for [title (snippet/titles)]
+        [:li (link-to (snippet/edit-url (key title)) (val title))])]])
 
 (defn build-header []
   [:h1 "Cljode"])
@@ -75,12 +75,12 @@
     (build-header)
     (build-snippet-links)
     [:div.float_left
-	    (form-to [:post "/add_snippet"]
-	      [:div.label "title"] (text-field :title title) [:br]
-	      [:div.label "tags"] (text-field :tags tags) [:br]
+      (form-to [:post "/add_snippet"]
+        [:div.label "title"] (text-field :title title) [:br]
+        [:div.label "tags"] (text-field :tags tags) [:br]
         [:div.label "syntax"] (drop-down :syntax syntax-options) [:br]
-	      (text-area {:id "code" :name "code"} :code code) [:br]
-	      (submit-button "add"))]))
+        (text-area {:id "code" :name "code"} :code code) [:br]
+        (submit-button "add"))]))
 
 (defn edit-snippet [{:keys [id]}]
   (if-let [snippet (snippet/id->snippet id)]
@@ -91,9 +91,9 @@
       (form-to [:post "/edit_snippet"]
         (hidden-field :id id)
         [:div.label "title"] (text-field :title (snippet "title")) [:br]
-	      [:div.label "tags"] (text-field :tags (snippet "tags")) [:br]
+        [:div.label "tags"] (text-field :tags (snippet "tags")) [:br]
         [:div.label "syntax"]  (drop-down :syntax syntax-options (snippet "syntax")) [:br]
-	      [:div.textarea_border (text-area {:id "code" :name "code"} :code (snippet "code"))] [:br]
+        [:div.textarea_border (text-area {:id "code" :name "code"} :code (snippet "code"))] [:br]
         (submit-button "save"))]
         [:script {type "text/javascript"}
           "var editor = CodeMirror.fromTextArea(document.getElementById('code'), {});"])))
