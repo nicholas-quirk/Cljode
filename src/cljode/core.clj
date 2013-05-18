@@ -10,6 +10,7 @@
 
 (def app (-> main-routes wrap-params))
 
-(defn -main [port]
+(defn -main [& args]
   (models/initialize)
-  (run-jetty app {:port (Integer. port)}))
+  (let [port (if (= (count args) 1) (first args) 8080)]
+    (run-jetty app {:port (Integer. port)})))
